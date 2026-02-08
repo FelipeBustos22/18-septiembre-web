@@ -1,0 +1,60 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Contador from '../components/Contador.astro';
+---
+
+<Layout titulo="¡ME QUIERO CURAAAAR! 🇨🇱">
+	
+	<!-- 
+		Decoración de "Guirnaldas" Digitales 
+		Simple pero efectivo para el ambiente.
+	-->
+	<div class="w-full flex justify-around opacity-50 mb-2 overflow-hidden select-none">
+		<span class="text-2xl animate-bounce">🚩</span>
+		<span class="text-2xl animate-bounce [animation-delay:100ms]">🚩</span>
+		<span class="text-2xl animate-bounce [animation-delay:200ms]">🚩</span>
+		<span class="text-2xl animate-bounce [animation-delay:300ms]">🚩</span>
+		<span class="text-2xl animate-bounce [animation-delay:400ms]">🚩</span>
+	</div>
+
+	<div class="z-10 flex flex-col items-center w-full">
+		<Contador/>
+
+		<!-- Botón de Pánico Dieciochero -->
+		 <a href="https://youtu.be/0JEAG-rqVwA?si=ellWArxUmA6uve7w&t=21" 
+		 target="_blank">
+		<button class="mt-3 px-10 py-3 bg-yellow-400 text-black font-black text-2xl rounded-full border-4 border-black shadow-[10px_10px_0px_rgba(0,0,0,1)] hover:translate-x-1.5 hover:translate-y-1.5 hover:shadow-none transition-all active:scale-95 uppercase italic cursor-pointer">
+			¡S-A-C-H-E-I!
+		</button>
+		</a>
+	</div>
+
+	<!-- 
+		Efecto de Confeti Patriota 
+		Usando partículas simples.
+	-->
+	<div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+		<div class="particula p1"></div>
+		<div class="particula p2"></div>
+		<div class="particula p3"></div>
+	</div>
+
+</Layout>
+
+<style>
+	.particula {
+		position: absolute;
+		width: 15px;
+		height: 15px;
+		top: -20px;
+		animation: caer 5s linear infinite;
+	}
+	.p1 { left: 10%; background: #ffffff; animation-delay: 0s; }
+	.p2 { left: 50%; background: #0039a6; animation-delay: 2s; }
+	.p3 { left: 90%; background: #d52b1e; animation-delay: 4s; }
+
+	@keyframes caer {
+		0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+		100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+	}
+</style>

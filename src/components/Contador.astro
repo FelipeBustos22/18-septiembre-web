@@ -1,0 +1,130 @@
+---
+import gatoHuaso from "../assets/gato-huaso.webp";
+---
+
+<div class="flex flex-col items-center gap-2 w-full max-w-5xl">
+  
+  <!-- Gato Huaso -->
+  <div class="relative animate-tiki-tiki">
+    <div class="absolute -top-3 -right-3 bg-yellow-400 text-black px-2 py-0.5 rounded-full text-[10px] font-black rotate-12 border-2 border-black z-10">
+      ¡UYUI!
+    </div>
+    <img 
+      src={gatoHuaso.src} 
+      alt="Gato Huaso"
+      class="size-40 rounded-2xl border-4 border-white shadow-[8px_8px_0px_rgba(0,0,0,0.3)] object-cover"
+    />
+  </div>
+
+  <div class="text-center space-y-1">
+    <h1 class="text-5xl md:text-7xl font-black italic uppercase tracking-wide drop-shadow-[4px_4px_0px_#0039a6] skew-x-[-5deg]">
+      ¿YA SE SIENTE <br/> LA SED?
+    </h1>
+    <p class="text-lg font-bold bg-white text-red-600 inline-block px-4 py-1 skew-x-10 uppercase">
+      Cuenta regresiva pal' 18
+    </p>
+  </div>
+
+  <!-- Contenedor de los bloques del contador (Estilo Cartel de Oferta) -->
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-3 w-full px-4">
+    
+    <!-- Días -->
+    <div class="grupo-tiempo bg-white text-black p-3 border-b-6 border-yellow-500 rounded-xl flex flex-col items-center shadow-xl">
+      <span id="dias" class="text-5xl font-black leading-none">00</span>
+      <span class="text-[10px] font-bold uppercase tracking-tighter text-blue-800 mt-1 text-center">Días pa'l primer choripan</span>
+    </div>
+
+    <!-- Horas -->
+    <div class="grupo-tiempo bg-white text-black p-3 border-b-6 border-blue-600 rounded-xl flex flex-col items-center shadow-xl">
+      <span id="horas" class="text-5xl font-black leading-none">00</span>
+      <span class="text-[10px] font-bold uppercase tracking-tighter text-blue-800 mt-1">Horas pa' que prenda el carbón</span>
+    </div>
+
+    <!-- Minutos -->
+    <div class="grupo-tiempo bg-white text-black p-3 border-b-6 border-red-600 rounded-xl flex flex-col items-center shadow-xl">
+      <span id="minutos" class="text-5xl font-black leading-none">00</span>
+      <span class="text-[10px] font-bold uppercase tracking-tighter text-blue-800 mt-1">Minutos pa' la empaná</span>
+    </div>
+
+    <!-- Segundos -->
+    <div class="grupo-tiempo bg-yellow-400 text-black p-3 border-b-6 border-black rounded-xl flex flex-col items-center shadow-xl animate-pulse">
+      <span id="segundos" class="text-5xl font-black leading-none">00</span>
+      <span class="text-[10px] font-bold uppercase tracking-tighter text-black mt-1">Segundos pal' terremoto</span>
+    </div>
+
+  </div>
+
+  <!-- "Termómetro de la Sed" interactivo -->
+  <div class="w-full max-w-md bg-black/30 h-7 rounded-full border-2 border-white overflow-hidden mt-2 relative">
+    <div id="barra-sed" class="h-full bg-linear-to-r from-yellow-300 to-yellow-600 transition-all duration-1000 ease-out" style="width: 0%"></div>
+    <span class="absolute inset-0 flex items-center justify-center text-[9px] font-black uppercase tracking-widest">
+      Nivel de Sed Nacional: <span id="porcentaje-sed">0</span>%
+    </span>
+  </div>
+
+</div>
+
+<style>
+  @keyframes tiki-tiki {
+    0%, 100% { transform: rotate(-2deg) scale(1); }
+    50% { transform: rotate(2deg) scale(1.1); }
+  }
+  .animate-tiki-tiki {
+    animation: tiki-tiki 0.7s ease-in-out infinite;
+  }
+  .grupo-tiempo {
+    transition: transform 0.2s;
+  }
+  .grupo-tiempo:hover {
+    transform: translateY(-10px) rotate(2deg);
+  }
+</style>
+
+<script>
+  /**
+   * Lógica Chilensis 2.0
+   */
+  const fechaObjetivo = new Date('September 18, 2026 00:00:00').getTime();
+  const fechaInicioConstruccion = new Date('February 7, 2026 00:00:00').getTime();
+
+  function actualizarContador() {
+    const ahora = new Date().getTime();
+    const distancia = fechaObjetivo - ahora;
+
+    const d = Math.floor(distancia / (1000 * 60 * 60 * 24));
+    const h = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const m = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
+    const s = Math.floor((distancia % (1000 * 60)) / 1000);
+
+    const elementoDias = document.getElementById('dias');
+    const elementoHoras = document.getElementById('horas');
+    const elementoMinutos = document.getElementById('minutos');
+    const elementoSegundos = document.getElementById('segundos');
+
+    if (elementoDias) elementoDias.innerText = d.toString().padStart(2, '0');
+    if (elementoHoras) elementoHoras.innerText = h.toString().padStart(2, '0');
+    if (elementoMinutos) elementoMinutos.innerText = m.toString().padStart(2, '0');
+    if (elementoSegundos) elementoSegundos.innerText = s.toString().padStart(2, '0');
+
+    // Calcular "Nivel de Sed" (Progreso entre hoy y el 18)
+    const totalTiempo = fechaObjetivo - fechaInicioConstruccion;
+    const transcurrido = ahora - fechaInicioConstruccion;
+    let progreso = Math.min(Math.max((transcurrido / totalTiempo) * 100, 0), 100);
+    
+    // El chileno siempre tiene al menos un 18% de sed
+    progreso = Math.max(progreso, 18);
+
+    const barraSed = document.getElementById('barra-sed');
+    const textoSed = document.getElementById('porcentaje-sed');
+    if (barraSed) barraSed.style.width = `${progreso}%`;
+    if (textoSed) textoSed.innerText = Math.floor(progreso).toString();
+
+    if (distancia < 0) {
+      clearInterval(intervalo);
+      document.body.innerHTML = "<div class='h-screen flex items-center justify-center bg-yellow-400 text-black text-9xl font-black rotate-12'>¡SE PRENDIOOOOO!</div>";
+    }
+  }
+
+  const intervalo = setInterval(actualizarContador, 1000);
+  actualizarContador();
+</script>

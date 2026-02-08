@@ -1,0 +1,57 @@
+---
+import '../styles/global.css';
+
+interface Props {
+	titulo: string;
+}
+
+const { titulo } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/webp" href="/bandera.webp" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content="Cuenta regresiva para las Fiestas Patrias de Chile 2026. ¡Ya se siente la sed! Celebra el 18 de Septiembre con empanadas, terremotos y asao 🇨🇱" />
+		<meta property="og:title" content={titulo} />
+		<meta property="og:description" content="Cuenta regresiva pal' 18 de Septiembre - ¡Ya se siente la sed! 🇨🇱" />
+		<meta property="og:type" content="website" />
+		<title>{titulo}</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bangers&display=swap" rel="stylesheet">
+	</head>
+	<body class="bg-[#d52b1e] text-white font-['Archivo_Black',sans-serif] selection:bg-[#0039a6] h-screen overflow-hidden">
+		<!-- 
+			Fondo Estilo "Papel de Fonda": 
+			Un patrón de rombos o banderas chilenas sutiles.
+		-->
+		<div class="fixed inset-0 -z-10 opacity-10" style="background-image: radial-gradient(#ffffff 2px, transparent 2px); background-size: 32px 32px;"></div>
+		
+		<main class="h-screen flex flex-col items-center justify-center px-4">
+			<slot />
+		</main>
+	</body>
+</html>
+
+<style is:global>
+	:root {
+		--chile-rojo: #d52b1e;
+		--chile-azul: #0039a6;
+		--chile-blanco: #ffffff;
+	}
+	
+	body {
+		background: linear-gradient(135deg, #d52b1e 0%, #a51d14 100%);
+		overflow-x: hidden;
+	}
+
+	h1, h2 {
+		font-family: 'Bangers', cursive;
+		letter-spacing: 2px;
+	}
+</style>
+
