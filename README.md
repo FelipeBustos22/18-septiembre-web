@@ -1,4 +1,4 @@
-# 🇨🇱 18 Septiembre Web - ¡EL 18 INTENSIFIES!
+# 🇨🇱 18 Septiembre Web
 
 Una aplicación web festiva y de alta energía diseñada para celebrar las Fiestas Patrias de Chile. Esta herramienta funciona como un "Sedómetro" nacional y una cuenta regresiva interactiva para generar expectativa hacia el 18 de septiembre.
 
