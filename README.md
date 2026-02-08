@@ -2,7 +2,7 @@
 
 Una aplicación web festiva y de alta energía diseñada para celebrar las Fiestas Patrias de Chile. Esta herramienta funciona como un "Sedómetro" nacional y una cuenta regresiva interactiva para generar expectativa hacia el 18 de septiembre.
 
-![Gato Huaso](src/assets/gato-huaso.webp)
+<img src="src/assets/gato-huaso.webp" width="200" alt="Gato huaso" />
 
 ## 🚀 Características
 
