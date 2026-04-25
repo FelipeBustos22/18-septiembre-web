@@ -10,7 +10,7 @@ Este proyecto mantiene dependencias bloqueadas y lockfile versionado para mejora
 
 ## Reportar una vulnerabilidad
 
-Si encuentras una vulnerabilidad, abre un issue privado o contacta al mantenedor del repositorio con:
+Si encuentras una vulnerabilidad, **no** abras un issue público. Usa **GitHub Security Advisories** ("Report a vulnerability") o contacta al mantenedor del repositorio por un canal privado con:
 
 - descripción del problema
 - impacto esperado
