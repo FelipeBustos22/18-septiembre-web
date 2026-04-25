@@ -46,5 +46,20 @@ Todos los comandos se ejecutan desde la raíz del proyecto:
 | `pnpm preview` | Previsualiza el build localmente |
 | `pnpm astro ...` | Ejecuta comandos de la CLI de Astro |
 
+### Seguridad de dependencias (npm)
+
+Este repositorio incluye una política de endurecimiento para npm en `.npmrc`:
+
+- `ignore-scripts=true` (bloquea hooks de instalación por defecto)
+- `save-exact=true` (evita rangos abiertos en nuevas instalaciones)
+- `audit-level=high`
+- `package-lock=true`
+
+Cuando sea necesario reconstruir binarios nativos legítimos (por ejemplo `esbuild` o `sharp`), usar:
+
+```bash
+npm rebuild esbuild sharp --ignore-scripts=false
+```
+
 ## 🇨🇱 ¡Viva Chile!
 Este proyecto fue creado para celebrar la cultura chilena con un toque de humor
