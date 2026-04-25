@@ -19,9 +19,9 @@ Si encuentras una vulnerabilidad, **no** abras un issue público. Usa **GitHub S
 
 Se intentará confirmar recepción y triage inicial en un plazo razonable.
 
-## Política de supply chain (npm)
+## Política de supply chain (pnpm)
 
-- Se evita `npm audit fix --force` en cambios rutinarios.
+- Se evita aplicar fixes automáticos con salto major sin validación previa.
 - Se prefieren actualizaciones semver-safe.
-- `ignore-scripts=true` queda activo por defecto en `.npmrc`.
-- Las excepciones para binarios nativos confiables se aplican con `npm rebuild` explícito.
+- El repositorio usa un único lockfile: `pnpm-lock.yaml`.
+- Las excepciones para binarios nativos confiables se aplican con `pnpm rebuild` explícito.

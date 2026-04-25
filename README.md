@@ -46,19 +46,18 @@ Todos los comandos se ejecutan desde la raíz del proyecto:
 | `pnpm preview` | Previsualiza el build localmente |
 | `pnpm astro ...` | Ejecuta comandos de la CLI de Astro |
 
-### Seguridad de dependencias (npm)
+### Seguridad de dependencias (pnpm)
 
-Este repositorio incluye una política de endurecimiento para npm en `.npmrc`:
+Este repositorio usa **pnpm** como gestor único. Política operativa:
 
-- `ignore-scripts=true` (bloquea hooks de instalación por defecto)
-- `save-exact=true` (evita rangos abiertos en nuevas instalaciones)
-- `audit-level=high`
-- `package-lock=true`
+- Mantener un único lockfile: `pnpm-lock.yaml`.
+- Evitar `pnpm audit --fix` con cambios que impliquen salto major sin validación.
+- Preferir actualizaciones semver-safe y versionado explícito en `package.json`.
 
 Cuando sea necesario reconstruir binarios nativos legítimos (por ejemplo `esbuild` o `sharp`), usar:
 
 ```bash
-npm rebuild esbuild sharp --ignore-scripts=false
+pnpm rebuild esbuild sharp
 ```
 
 ## 🇨🇱 ¡Viva Chile!
