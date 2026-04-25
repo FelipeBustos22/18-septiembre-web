@@ -46,5 +46,19 @@ Todos los comandos se ejecutan desde la raíz del proyecto:
 | `pnpm preview` | Previsualiza el build localmente |
 | `pnpm astro ...` | Ejecuta comandos de la CLI de Astro |
 
+### Seguridad de dependencias (pnpm)
+
+Este repositorio usa **pnpm** como gestor único. Política operativa:
+
+- Mantener un único lockfile: `pnpm-lock.yaml`.
+- Evitar `pnpm audit --fix` con cambios que impliquen salto major sin validación.
+- Preferir actualizaciones semver-safe y versionado explícito en `package.json`.
+
+Cuando sea necesario reconstruir binarios nativos legítimos (por ejemplo `esbuild` o `sharp`), usar:
+
+```bash
+pnpm rebuild esbuild sharp
+```
+
 ## 🇨🇱 ¡Viva Chile!
 Este proyecto fue creado para celebrar la cultura chilena con un toque de humor
